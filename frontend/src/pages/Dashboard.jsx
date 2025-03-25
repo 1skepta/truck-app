@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import API from "../api";
+import Map from "../components/Map";
+import LogChart from "../components/LogChart";
 
 function Dashboard() {
   const [trips, setTrips] = useState([]);
+  const [selectedTrip, setSelectedTrip] = useState(null);
 
   useEffect(() => {
     API.get("trips/")
@@ -11,22 +14,41 @@ function Dashboard() {
   }, []);
 
   return (
-    <div>
-      <h2>Trips</h2>
-      {trips.length === 0 ? (
-        <p>No trips found.</p>
-      ) : (
-        <ul>
-          {trips.map((trip) => (
-            <li key={trip.id}>
-              <strong>
-                {trip.start_location} → {trip.end_location}
-              </strong>{" "}
-              <br />⏳ {trip.total_hours} hrs | ⛽ Fuel Stops: {trip.fuel_stops}{" "}
-              | 🚛 Rest Stops: {trip.rest_stops}
-            </li>
-          ))}
-        </ul>
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
+        <h2 className="text-2xl font-bold text-gray-700 mb-4">🚛 My Trips</h2>
+        {trips.length === 0 ? (
+          <p className="text-gray-500">No trips found.</p>
+        ) : (
+          <ul className="space-y-4">
+            {trips.map((trip) => (
+              <li
+                key={trip.id}
+                className="p-4 bg-gray-50 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-200"
+                onClick={() => setSelectedTrip(trip)}
+              >
+                <p className="text-lg font-semibold text-gray-800">
+                  {trip.start_location} → {trip.end_location}
+                </p>
+                <p className="text-sm text-gray-600">
+                  ⏳ {trip.total_hours} hrs | ⛽ {trip.fuel_stops} Fuel Stops |
+                  🚛 {trip.rest_stops} Rest Stops
+                </p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      {selectedTrip && (
+        <div className="max-w-4xl mx-auto mt-6">
+          <h3 className="text-xl font-bold">Trip Route:</h3>
+          <Map
+            startLocation={selectedTrip.start_location}
+            endLocation={selectedTrip.end_location}
+          />
+          <LogChart tripId={selectedTrip.id} />
+        </div>
       )}
     </div>
   );
