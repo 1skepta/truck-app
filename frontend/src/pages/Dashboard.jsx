@@ -6,16 +6,8 @@ function Dashboard() {
 
   useEffect(() => {
     API.get("trips/")
-      .then((response) => {
-        console.log("Trips data:", response.data); // Debugging
-        setTrips(response.data);
-      })
-      .catch((error) => {
-        console.error(
-          "Error fetching trips:",
-          error.response ? error.response.data : error.message
-        );
-      });
+      .then((response) => setTrips(response.data))
+      .catch((error) => console.error("Error fetching trips:", error));
   }, []);
 
   return (
@@ -27,8 +19,11 @@ function Dashboard() {
         <ul>
           {trips.map((trip) => (
             <li key={trip.id}>
-              {trip.start_location} → {trip.end_location} ({trip.total_hours}{" "}
-              hrs)
+              <strong>
+                {trip.start_location} → {trip.end_location}
+              </strong>{" "}
+              <br />⏳ {trip.total_hours} hrs | ⛽ Fuel Stops: {trip.fuel_stops}{" "}
+              | 🚛 Rest Stops: {trip.rest_stops}
             </li>
           ))}
         </ul>

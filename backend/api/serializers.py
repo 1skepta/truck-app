@@ -4,7 +4,7 @@ from .models import Trip, LogEntry
 class TripSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Trip
-        fields = "__all__"
+        fields = '__all__'
 
 class LogEntrySerializer(serializers.ModelSerializer): 
     class Meta: 
