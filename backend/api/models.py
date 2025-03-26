@@ -16,13 +16,12 @@ class Trip(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def calculate_stops(self):
-        self.fuel_stops = int(self.distance_miles//1000)
+        self.fuel_stops = int(self.distance_miles // 1000)
         self.rest_stops = int(self.total_hours // 8)
 
     def save(self, *args, **kwargs):
         self.calculate_stops()
         super().save(*args, **kwargs)
-
 
     def __str__(self): 
         return f"{self.driver.username} - {self.start_location} to {self.end_location}"
@@ -34,3 +33,12 @@ class LogEntry(models.Model):
 
     def __str__(self):
         return f"{self.trip.driver.username} - {self.status} at {self.log_time}"
+    
+class DriverProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    license_number = models.CharField(max_length=20, unique=True, blank=True, null=True)
+    truck_type = models.CharField(max_length=100, blank=True, null=True)
+    years_of_experience = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.license_number}"
