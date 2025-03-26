@@ -33,8 +33,8 @@ function LogChart({ tripId }) {
   };
 
   return (
-    <div className="p-4 bg-white shadow-lg rounded-lg">
-      <h3 className="text-xl font-bold">Driver Log</h3>
+    <div>
+      <h3>Driver Log</h3>
       <Bar data={chartData} />
     </div>
   );
