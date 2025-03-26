@@ -7,12 +7,25 @@ import LogChart from "../components/LogChart";
 function Dashboard() {
   const [trips, setTrips] = useState([]);
   const [selectedTrip, setSelectedTrip] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     API.get("trips/")
-      .then((response) => setTrips(response.data))
-      .catch((error) => console.error("Error fetching trips:", error));
+      .then((response) => {
+        setTrips(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching trips:", error);
+        if (error.response && error.response.status === 401) {
+          navigate("/"); // Redirect to login if unauthorized
+        } else {
+          setError("Failed to load trips. Please try again.");
+        }
+        setLoading(false);
+      });
   }, []);
 
   const handleLogout = () => {
@@ -24,20 +37,31 @@ function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <h2 className="text-2xl font-bold text-gray-700">🚛 My Trips</h2>
           <button
             onClick={handleLogout}
-            className="bg-red-500 text-white px-4 py-2 rounded-lg"
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
           >
             Logout
           </button>
         </div>
 
-        {trips.length === 0 ? (
-          <p className="text-gray-500">No trips found.</p>
+        {loading ? (
+          <p className="text-gray-500 mt-4">Loading trips...</p>
+        ) : error ? (
+          <p className="text-red-500 mt-4">{error}</p>
+        ) : trips.length === 0 ? (
+          <div className="text-center mt-6">
+            <p className="text-gray-500">
+              No trips found. Start a new journey!
+            </p>
+            <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
+              Add a New Trip
+            </button>
+          </div>
         ) : (
-          <ul className="space-y-4">
+          <ul className="space-y-4 mt-4">
             {trips.map((trip) => (
               <li
                 key={trip.id}
