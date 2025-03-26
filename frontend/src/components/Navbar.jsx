@@ -6,23 +6,23 @@ function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
-    navigate("/");
+    navigate("/"); 
   };
 
   return (
-    <nav className="bg-blue-600 text-white p-4 shadow-md">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold">🚛 Truck App</h1>
-        <div className="space-x-6">
-          <Link to="/dashboard" className="hover:underline">
+    <nav className="bg-blue-700 text-white py-4 shadow-md">
+      <div className="container mx-auto flex justify-between items-center px-6">
+        <h1 className="text-2xl font-bold tracking-wide">🚛 Truck Manager</h1>
+        <div className="space-x-6 text-lg">
+          <Link to="/dashboard" className="hover:text-gray-300 transition">
             Dashboard
           </Link>
-          <Link to="/profile" className="hover:underline">
+          <Link to="/profile" className="hover:text-gray-300 transition">
             Profile
           </Link>
           <button
             onClick={handleLogout}
-            className="bg-red-500 px-4 py-2 rounded-md hover:bg-red-600"
+            className="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600 transition"
           >
             Logout
           </button>
