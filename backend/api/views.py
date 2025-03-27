@@ -60,7 +60,7 @@ class LogEntryViewSet(viewsets.ModelViewSet):
         driver = self.request.user
         trip = serializer.validated_data.get("trip")
         new_status = serializer.validated_data.get("status")
-        log_time = serializer.validated_data.get("log_time", now())  # Default to current time
+        log_time = serializer.validated_data.get("log_time", now()) 
 
         eight_days_ago = log_time - timedelta(days=8)
         recent_logs = LogEntry.objects.filter(trip__driver=driver, log_time__gte=eight_days_ago).order_by("log_time")

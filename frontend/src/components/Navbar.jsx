@@ -27,7 +27,7 @@ function Navbar() {
   };
 
   return (
-    <nav>
+    <nav className="pb-3 shadow-md mb-7">
       <div className="flex justify-between items-center mx-5 mt-5">
         <div className="w-8 cursor-pointer" onClick={() => setIsOpen(true)}>
           <img src="images/sort.png" alt="hamburger icon" />

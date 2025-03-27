@@ -46,14 +46,12 @@ function Dashboard() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // We assume that pickup_location becomes the trip's start_location and
-    // dropoff_location becomes the trip's end_location.
     const now = new Date();
-    const estimatedDurationHours = 4; // You can adjust this logic later.
+    const estimatedDurationHours = 4;
     const formattedTrip = {
       start_location: newTrip.pickup_location,
       end_location: newTrip.dropoff_location,
-      distance_miles: 100, // or compute if needed
+      distance_miles: 100,
       start_time: now.toISOString(),
       end_time: new Date(
         now.getTime() + estimatedDurationHours * 3600000
@@ -68,7 +66,6 @@ function Dashboard() {
         console.log("Trip added successfully:", response.data);
         fetchTrips();
         setMessage("Trip added successfully!");
-        // Clear only the fields used for the trip addition.
         setNewTrip({
           current_location: "",
           pickup_location: "",
@@ -84,11 +81,16 @@ function Dashboard() {
   };
 
   return (
-    <div>
+    <div className="px-5">
       <div>
-        <div>
+        <div className="flex justify-between items-center">
           <h2>My Trips</h2>
-          <button onClick={() => setShowModal(true)}>Add Trip</button>
+          <button
+            className="bg-[#00cca6] p-2 px-3 text-white font-bold rounded-md"
+            onClick={() => setShowModal(true)}
+          >
+            Add Trip
+          </button>
         </div>
 
         {loading ? (
@@ -100,7 +102,11 @@ function Dashboard() {
         ) : (
           <ul>
             {trips.map((trip) => (
-              <li key={trip.id} onClick={() => setSelectedTrip(trip)}>
+              <li
+                className="bg-gray-100 bg-[url('/images/trips.png')] bg-no-repeat bg-right bg-contain p-5 mt-4 rounded-md "
+                key={trip.id}
+                onClick={() => setSelectedTrip(trip)}
+              >
                 <p>
                   {trip.start_location} → {trip.end_location}
                 </p>
