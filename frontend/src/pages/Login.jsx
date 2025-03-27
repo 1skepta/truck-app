@@ -24,7 +24,7 @@ function Login() {
     <div className="text-black flex flex-col justify-between min-h-screen relative">
       <div className="p-7 flex flex-col items-center bg-white rounded-lg">
         <h2 className="mt-20 mb-10 font-extrabold text-2xl">LOGIN</h2>
-        <form onSubmit={handleLogin} className="flex flex-col w-4/5">
+        <form onSubmit={handleLogin} className="flex flex-col w-5/6">
           <input
             type="text"
             placeholder="Username"
@@ -43,6 +43,13 @@ function Login() {
             Login
           </button>
         </form>
+
+        <p className="mt-4 text-sm">
+          Don’t have an account?{" "}
+          <a href="/register" className="text-[#00cca6] font-bold">
+            Create one
+          </a>
+        </p>
       </div>
 
       <img
@@ -50,7 +57,7 @@ function Login() {
         alt="background"
         className="absolute bottom-0 left-0 w-full"
         style={{
-          height: "50vh",
+          height: "45vh",
           objectFit: "cover",
         }}
       />
