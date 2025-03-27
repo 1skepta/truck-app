@@ -8,6 +8,13 @@ function Register() {
     username: "",
     email: "",
     password: "",
+    last_name: "",
+    first_name: "",
+  });
+  const [profileData, setProfileData] = useState({
+    license_number: "",
+    truck_type: "",
+    years_of_experience: "",
   });
   const navigate = useNavigate();
 
@@ -15,10 +22,19 @@ function Register() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleProfileChange = (e) => {
+    setProfileData({ ...profileData, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const combinedData = {
+      ...formData,
+      profile: profileData,
+    };
+
     try {
-      await API.post("register/", formData);
+      await API.post("register/", combinedData);
       alert("Account created! Please log in");
       navigate("/");
     } catch (error) {
@@ -28,13 +44,29 @@ function Register() {
 
   return (
     <div className="text-black flex flex-col justify-between min-h-screen relative">
-      <div className="p-7 flex flex-col items-center bg-white rounded-lg">
-        <h2 className="mt-20 mb-10 font-extrabold text-2xl">REGISTER</h2>
-        <form onSubmit={handleSubmit} className="flex flex-col w-5/6">
+      <div className="p-7 flex flex-col items-center bg-white rounded-lg overflow-y-auto max-h-[75vh]">
+        <h2 className="mt-10 mb-6 font-extrabold text-2xl">REGISTER</h2>
+        <form onSubmit={handleSubmit} className="flex flex-col w-4/5">
+          <input
+            type="text"
+            name="first_name"
+            placeholder="First Name"
+            onChange={handleChange}
+            required
+            className="bg-gray-100 border-2 border-gray-200 rounded-md p-2 mb-2 focus:border-gray-200 focus:ring-0"
+          />
+          <input
+            type="text"
+            name="last_name"
+            placeholder="Last Name"
+            onChange={handleChange}
+            required
+            className="bg-gray-100 border-2 border-gray-200 rounded-md p-2 mb-2 focus:border-gray-200 focus:ring-0"
+          />
           <input
             type="text"
             name="username"
-            placeholder="Username"
+            placeholder="Preferred Username"
             onChange={handleChange}
             required
             className="bg-gray-100 border-2 border-gray-200 rounded-md p-2 mb-2 focus:border-gray-200 focus:ring-0"
@@ -53,9 +85,33 @@ function Register() {
             placeholder="Password"
             onChange={handleChange}
             required
-            className="bg-gray-100 border-2 border-gray-200 rounded-md p-2 mb-4 focus:border-gray-200 focus:ring-0"
+            className="bg-gray-100 border-2 border-gray-200 rounded-md p-2 mb-2 focus:border-gray-200 focus:ring-0"
           />
-          <button className="bg-[#00cca6] py-2 text-white font-bold rounded-md">
+          <input
+            type="text"
+            name="license_number"
+            placeholder="License Number"
+            onChange={handleProfileChange}
+            required
+            className="bg-gray-100 border-2 border-gray-200 rounded-md p-2 mb-2 focus:border-gray-200 focus:ring-0"
+          />
+          <input
+            type="text"
+            name="truck_type"
+            placeholder="Truck Type"
+            onChange={handleProfileChange}
+            required
+            className="bg-gray-100 border-2 border-gray-200 rounded-md p-2 mb-2 focus:border-gray-200 focus:ring-0"
+          />
+          <input
+            type="number"
+            name="years_of_experience"
+            placeholder="Years of Experience"
+            onChange={handleProfileChange}
+            required
+            className="bg-gray-100 border-2 border-gray-200 rounded-md p-2 mb-2 focus:border-gray-200 focus:ring-0"
+          />
+          <button className="bg-[#00cca6] py-2 text-white font-bold rounded-sm">
             Register
           </button>
         </form>
@@ -71,10 +127,7 @@ function Register() {
         src={bg}
         alt="background"
         className="absolute bottom-0 left-0 w-full"
-        style={{
-          height: "40vh",
-          objectFit: "cover",
-        }}
+        style={{ height: "25vh", objectFit: "cover" }}
       />
     </div>
   );
