@@ -1,7 +1,10 @@
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const [animate, setAnimate] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("access_token");
@@ -9,16 +12,56 @@ function Navbar() {
     navigate("/");
   };
 
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => setAnimate(true), 10);
+    } else {
+      setAnimate(false);
+      setTimeout(() => setIsOpen(false), 1000);
+    }
+  }, [isOpen]);
+
+  const closeMenu = () => {
+    setAnimate(false);
+    setTimeout(() => setIsOpen(false), 1000);
+  };
+
   return (
     <nav>
-      <div>
-        <h1>Truck Manager</h1>
+      <div className="flex justify-between items-center mx-5 mt-5">
+        <div className="w-8 cursor-pointer" onClick={() => setIsOpen(true)}>
+          <img src="images/sort.png" alt="hamburger icon" />
+        </div>
         <div>
-          <Link to="/dashboard">Dashboard</Link>
-          <Link to="/profile">Profile</Link>
-          <button onClick={handleLogout}>Logout</button>
+          <Link to="/dashboard">Truck Manager</Link>
         </div>
       </div>
+
+      {isOpen && (
+        <div
+          className="fixed inset-0  bg-opacity-50 flex justify-start z-50 transition-opacity duration-1000 ease-in-out"
+          onClick={closeMenu}
+        >
+          <div
+            className={`bg-white w-64 h-full p-5 shadow-lg transform transition-transform duration-1000 ease-in-out ${
+              animate ? "translate-x-0" : "-translate-x-full"
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button className="mb-5 text-lg font-bold" onClick={closeMenu}>
+              ✖
+            </button>
+            <div className="flex flex-col items-start space-y-4">
+              <Link to="/profile" className="text-blue-500" onClick={closeMenu}>
+                Profile
+              </Link>
+              <button className="text-red-500" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
