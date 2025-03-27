@@ -1,2 +1,9 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
+
+body {
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  height: 100vh;
+}
