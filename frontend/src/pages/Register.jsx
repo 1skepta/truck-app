@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../api";
-import bg from "../assets/login.png";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -43,8 +42,8 @@ function Register() {
   };
 
   return (
-    <div className="text-black flex flex-col justify-between min-h-screen relative">
-      <div className="p-7 flex flex-col items-center bg-white rounded-lg overflow-y-auto max-h-[75vh]">
+    <div className="text-black flex flex-col justify-between min-h-screen relative bg-[#F3FFFD]">
+      <div className="p-7 flex flex-col items-center bg-[#F3FFFD] rounded-lg overflow-y-auto max-h-[75vh]">
         <h2 className="mt-10 mb-6 font-extrabold text-2xl">REGISTER</h2>
         <form onSubmit={handleSubmit} className="flex flex-col w-4/5">
           <input
@@ -124,7 +123,7 @@ function Register() {
       </div>
 
       <img
-        src={bg}
+        src="assets/auth.png"
         alt="background"
         className="absolute bottom-0 left-0 w-full"
         style={{ height: "25vh", objectFit: "cover" }}

@@ -8,7 +8,6 @@ function Dashboard() {
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  // Form state for the modal
   const [currentLocation, setCurrentLocation] = useState("");
   const [pickupLocation, setPickupLocation] = useState("");
   const [dropoffLocation, setDropoffLocation] = useState("");
@@ -43,7 +42,6 @@ function Dashboard() {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    // Clear the form fields
     setCurrentLocation("");
     setPickupLocation("");
     setDropoffLocation("");
@@ -52,8 +50,6 @@ function Dashboard() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Build payload mapping form fields to model fields.
-    // Since your Trip model requires start_time and end_time, we'll use the current time.
     const nowISO = new Date().toISOString();
     const payload = {
       start_location: pickupLocation,
@@ -65,7 +61,6 @@ function Dashboard() {
 
     API.post("trips/", payload)
       .then((response) => {
-        // Refresh the trips list and close the modal
         fetchTrips();
         handleCloseModal();
       })
@@ -76,15 +71,29 @@ function Dashboard() {
   };
 
   return (
-    <div className="px-5">
+    <div className="px-5  ">
       <div className="flex items-center justify-between">
-        <h2>My Trips</h2>
+        <h2 className="font-black">My Trips</h2>
         <button
           onClick={handleOpenModal}
           className="bg-[#00cca6] py-1 px-3 text-white rounded-sm"
         >
           Add Trip
         </button>
+      </div>
+      <div className="fixed bottom-0 left-0 w-full z-[10] flex items-center text-xs font-bold leading-4 justify-center px-5 pb-5">
+        <div className="bg-[#F3FFFD] w-60 mr-3 h-36 pt-3 pl-2 shadow-md">
+          <img src="assets/handshake.png" alt="handshake" className="w-10" />
+          <p>Manage your business deals and partnerships with ease</p>
+        </div>
+        <div className="bg-[#F3FFFD] w-60 mr-3 h-36 pt-3 pl-2 shadow-md">
+          <img src="assets/truck.png" alt="truck" className="w-10" />
+          <p>Track and monitor all your rides in one place</p>
+        </div>
+        <div className="bg-[#00cca6] w-60 h-36 pt-3 pl-2 shadow-md">
+          <img src="assets/insurance.png" alt="insurance" className="w-10" />
+          <p>Stay updated on your truck's insurance coverage</p>
+        </div>
       </div>
       {loading ? (
         <p className="text-center mt-5">Loading trips...</p>
@@ -116,16 +125,15 @@ function Dashboard() {
           onClick={handleCloseModal}
         >
           <div
-            className="bg-white rounded p-5 w-96 relative"
+            className="bg-white rounded px-5 py-10 w-96 relative mx-7"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={handleCloseModal}
-              className="absolute top-2 right-2 text-xl font-bold"
-            >
-              &times;
-            </button>
-            <h3 className="mb-4 text-lg font-semibold">Add New Trip</h3>
+            <div className="mb-4 flex justify-between items-center">
+              <h3 className="text-lg font-semibold">Add New Trip</h3>
+              <button onClick={handleCloseModal} className="text-lg font-bold">
+                &times;
+              </button>
+            </div>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label className="block mb-1 font-medium">
@@ -181,7 +189,7 @@ function Dashboard() {
               </div>
               <button
                 type="submit"
-                className="bg-[#00cca6] text-white py-1 px-3 rounded-sm w-full"
+                className="bg-[#00cca6] text-white py-1 px-3 rounded-sm w-full font-bold"
               >
                 Add Trip
               </button>

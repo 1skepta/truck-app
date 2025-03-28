@@ -38,11 +38,11 @@ function Navbar() {
   };
 
   return (
-    <nav className="pb-3 shadow-md mb-7">
-      <div className="flex justify-between items-center mx-5 mt-5">
+    <nav className="pb-3 shadow-md mb-7 bg-[#F3FFFD]">
+      <div className="flex justify-between items-center mx-5 pt-5">
         <div className="w-8 cursor-pointer" onClick={handleIconClick}>
           {isDashboard ? (
-            <img src="images/sort.png" alt="hamburger icon" />
+            <img src="assets/sort.png" alt="hamburger icon" />
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -69,11 +69,11 @@ function Navbar() {
 
       {isOpen && (
         <div
-          className="fixed inset-0 bg-opacity-50 flex justify-start z-50 transition-opacity duration-1000 ease-in-out"
+          className="fixed inset-0 bg-opacity-50 flex justify-start z-50 transition-opacity duration-1000 ease-in-out "
           onClick={closeMenu}
         >
           <div
-            className={`bg-white w-64 h-full p-5 shadow-lg transform transition-transform duration-1000 ease-in-out ${
+            className={`bg-[#F3FFFD] w-64 h-full p-5 shadow-lg transform transition-transform duration-1000 ease-in-out ${
               animate ? "translate-x-0" : "-translate-x-full"
             }`}
             onClick={(e) => e.stopPropagation()}

@@ -24,8 +24,15 @@ def register_user(request):
 @permission_classes([IsAuthenticated])
 def get_driver_profile(request):
     profile = request.user.profile
-    serializer = DriverProfileSerializer(profile)
-    return Response(serializer.data)
+    profile_data = DriverProfileSerializer(profile).data
+    user_data = {
+        "first_name": request.user.first_name,
+        "last_name": request.user.last_name,
+        "username": request.user.username,
+        "email": request.user.email,
+    }
+    combined_data = {**user_data, **profile_data}
+    return Response(combined_data)
 
 @api_view(["PUT"])
 @permission_classes([IsAuthenticated])

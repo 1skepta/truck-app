@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../api";
-import bg from "../assets/login.png";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -21,8 +20,8 @@ function Login() {
   };
 
   return (
-    <div className="text-black flex flex-col justify-between min-h-screen relative">
-      <div className="p-7 flex flex-col items-center bg-white rounded-lg">
+    <div className="text-black bg-[#F3FFFD] flex flex-col justify-between min-h-screen relative">
+      <div className="p-7 flex flex-col items-center bg-[#F3FFFD] rounded-lg">
         <h2 className="mt-20 mb-10 font-extrabold text-2xl">LOGIN</h2>
         <form onSubmit={handleLogin} className="flex flex-col w-5/6">
           <input
@@ -53,7 +52,7 @@ function Login() {
       </div>
 
       <img
-        src={bg}
+        src="assets/auth.png"
         alt="background"
         className="absolute bottom-0 left-0 w-full"
         style={{
