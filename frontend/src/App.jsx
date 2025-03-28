@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from "./components/Navbar"; //
+import TripDetails from "./pages/TripDetails";
 
 function App() {
   return (
@@ -29,6 +30,15 @@ function App() {
               <>
                 <Navbar />
                 <Profile />
+              </>
+            }
+          />
+          <Route
+            path="/trip/:id"
+            element={
+              <>
+                <Navbar />
+                <TripDetails />
               </>
             }
           />
