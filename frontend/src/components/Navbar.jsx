@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { User, LogOut, DoorOpen } from "lucide-react";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -69,11 +70,20 @@ function Navbar() {
         <div className="hidden md:inline">
           <ul className="flex">
             <li>
-              <Link to="/profile" onClick={closeMenu}>
+              <Link
+                to="/profile"
+                onClick={closeMenu}
+                className="flex items-center"
+              >
+                <User className="w-4 h-5 mr-1" />
                 Profile
               </Link>
             </li>
-            <li className="ml-3 cursor-pointer" onClick={handleLogout}>
+            <li
+              className="ml-7 cursor-pointer flex items-center"
+              onClick={handleLogout}
+            >
+              <LogOut className="w-4 h-5 mr-1" />
               Logout
             </li>
           </ul>
@@ -95,10 +105,12 @@ function Navbar() {
               ✖
             </button>
             <div className="flex flex-col items-start space-y-4">
-              <Link to="/profile" className="text-blue-500" onClick={closeMenu}>
+              <Link to="/profile" onClick={closeMenu} className="flex my-6">
+                <User className="w-4 h-5 mr-3" />
                 Profile
               </Link>
-              <button className="text-red-500" onClick={handleLogout}>
+              <button onClick={handleLogout} className="flex">
+                <LogOut className="w-4 h-5 rotate-180 mr-3" />
                 Logout
               </button>
             </div>
