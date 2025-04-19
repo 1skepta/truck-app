@@ -40,7 +40,7 @@ function Navbar() {
 
   return (
     <nav className="pb-3 shadow-md mb-7 bg-[#F3FFFD]">
-      <div className="flex justify-between items-center mx-5 pt-5">
+      <div className="flex justify-between items-center mx-5 pt-5 md:mx-10  md:pt-10">
         <div className="w-8 cursor-pointer md:hidden" onClick={handleIconClick}>
           {isDashboard ? (
             <img src="assets/sort.png" alt="hamburger icon" />

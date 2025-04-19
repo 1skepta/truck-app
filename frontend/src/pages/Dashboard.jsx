@@ -71,17 +71,17 @@ function Dashboard() {
   };
 
   return (
-    <div className="px-5  ">
-      <div className="flex items-center justify-between">
+    <div className="px-5 md:mx-16">
+      <div className="flex items-center justify-between md:mx-12">
         <h2 className="font-black">My Trips</h2>
         <button
           onClick={handleOpenModal}
-          className="bg-[#00cca6] py-1 px-3 text-white rounded-sm"
+          className="bg-[#00cca6] py-1 px-3 text-white rounded-sm cursor-pointer"
         >
           Add Trip
         </button>
       </div>
-      <div className="fixed bottom-0 left-0 w-full z-[10] flex items-center text-xs font-bold leading-4 justify-center px-5 pb-5">
+      <div className="fixed bottom-0 left-0 w-full z-[10] flex items-center text-xs font-light leading-4 justify-center px-5 pb-5">
         <div className="bg-[#F3FFFD] w-60 mr-3 h-36 pt-3 pl-2 shadow-md">
           <img src="assets/handshake.png" alt="handshake" className="w-10" />
           <p>Manage your business deals and partnerships with ease</p>
