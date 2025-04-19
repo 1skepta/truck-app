@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { User, LogOut, DoorOpen } from "lucide-react";
+import { User, LogOut } from "lucide-react";
 
 function Navbar() {
   const navigate = useNavigate();

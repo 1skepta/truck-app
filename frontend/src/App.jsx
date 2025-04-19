@@ -4,7 +4,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Navbar from "./components/Navbar"; //
+import Navbar from "./components/Navbar";
 import TripDetails from "./pages/TripDetails";
 
 function App() {

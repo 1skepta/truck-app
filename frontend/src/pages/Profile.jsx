@@ -20,7 +20,6 @@ function Profile() {
   useEffect(() => {
     API.get("profile/")
       .then((response) => {
-        // Expecting response.data to include first_name, last_name, username, email along with driver profile fields
         setProfile(response.data);
         setLoading(false);
       })
@@ -41,7 +40,6 @@ function Profile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Only update the driver profile related fields
     API.put("profile/update/", {
       license_number: profile.license_number,
       truck_type: profile.truck_type,
