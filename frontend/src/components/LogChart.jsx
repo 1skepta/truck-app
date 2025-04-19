@@ -34,7 +34,6 @@ function LogChart({ tripId }) {
 
   return (
     <div>
-      <h3>Driver Log</h3>
       <Bar data={chartData} />
     </div>
   );

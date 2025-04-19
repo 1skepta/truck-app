@@ -24,29 +24,36 @@ function TripDetails() {
   }, [id]);
 
   return (
-    <div className="p-5">
+    <div className="p-5 md:mx-16">
       {loading ? (
         <p>Loading trip details...</p>
       ) : error ? (
         <p>{error}</p>
       ) : (
-        <>
-          <h2>Trip Details</h2>
-          <p>
-            <strong>From:</strong> {trip.start_location} <br />
-            <strong>To:</strong> {trip.end_location} <br />
-            <strong>Hours Used:</strong> {trip.total_hours} hrs
-          </p>
+        <div className="md:mx-16">
+          <h2 className="text-center font-bold">Trip Details</h2>
 
-          <h3>Trip Route</h3>
+          <div className="flex-col justify-between flex ">
+            <span>
+              <strong>From:</strong> {trip.start_location}
+            </span>
+            <span>
+              <strong>To:</strong> {trip.end_location}
+            </span>
+            <span>
+              <strong>Hours Used:</strong> {trip.total_hours} hrs
+            </span>
+          </div>
+
+          <h3 className="text-center font-bold mt-6 mb-3">Trip Route</h3>
           <Map
             startLocation={trip.start_location}
             endLocation={trip.end_location}
           />
 
-          <h3>Trip Analysis</h3>
+          <h3 className="text-center font-bold mt-6 mb-3">Trip Analysis</h3>
           <LogChart tripId={trip.id} />
-        </>
+        </div>
       )}
     </div>
   );
