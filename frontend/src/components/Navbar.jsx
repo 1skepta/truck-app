@@ -40,7 +40,7 @@ function Navbar() {
   return (
     <nav className="pb-3 shadow-md mb-7 bg-[#F3FFFD]">
       <div className="flex justify-between items-center mx-5 pt-5">
-        <div className="w-8 cursor-pointer" onClick={handleIconClick}>
+        <div className="w-8 cursor-pointer md:hidden" onClick={handleIconClick}>
           {isDashboard ? (
             <img src="assets/sort.png" alt="hamburger icon" />
           ) : (
@@ -60,10 +60,23 @@ function Navbar() {
             </svg>
           )}
         </div>
+
         <div>
           <Link to="/dashboard" className="text-xl font-bold">
             Truck Manager
           </Link>
+        </div>
+        <div className="hidden md:inline">
+          <ul className="flex">
+            <li>
+              <Link to="/profile" onClick={closeMenu}>
+                Profile
+              </Link>
+            </li>
+            <li className="ml-3 cursor-pointer" onClick={handleLogout}>
+              Logout
+            </li>
+          </ul>
         </div>
       </div>
 
