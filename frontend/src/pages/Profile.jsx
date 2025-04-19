@@ -56,30 +56,30 @@ function Profile() {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <h2 className="text-2xl font-semibold mb-4">My Profile</h2>
+      <h2 className="font-bold text-center">My Profile</h2>
       {loading ? (
-        <p className="text-gray-600">Loading profile...</p>
+        <p className="text-gray-600 text-center">Loading profile...</p>
       ) : error ? (
-        <p className="text-red-600">{error}</p>
+        <p className="text-red-600 text-center">{error}</p>
       ) : (
         <div className="bg-white shadow rounded p-6">
           <div className="mb-6 border-b pb-4">
-            <h3 className="text-xl font-medium mb-2">User Information</h3>
+            <h3 className="font-bold mb-2">User Information</h3>
             <p>
-              <span className="font-bold">Full Name: </span>
+              <span className="">Full Name: </span>
               {profile.first_name} {profile.last_name}
             </p>
             <p>
-              <span className="font-bold">Username: </span>
+              <span className="">Username: </span>
               {profile.username}
             </p>
             <p>
-              <span className="font-bold">Email: </span>
+              <span className="">Email: </span>
               {profile.email}
             </p>
           </div>
           <div>
-            <h3 className="text-xl font-medium mb-4">Driver Profile</h3>
+            <h3 className=" font-bold mb-4">Driver Profile</h3>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
@@ -134,13 +134,13 @@ function Profile() {
               </div>
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                className="px-4 py-2 bg-[#00cca6] text-white rounded transition mx-auto flex cursor-pointer"
               >
                 Update Profile
               </button>
             </form>
           </div>
-          {message && <p className="mt-4 text-green-600">{message}</p>}
+          {message && <p className="mt-4 text-green-600 text-sm">{message}</p>}
         </div>
       )}
     </div>
