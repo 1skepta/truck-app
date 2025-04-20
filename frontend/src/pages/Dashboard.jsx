@@ -130,7 +130,10 @@ function Dashboard() {
           >
             <div className="mb-4 flex justify-between items-center">
               <h3 className="text-lg font-semibold">Add New Trip</h3>
-              <button onClick={handleCloseModal} className="text-lg font-bold">
+              <button
+                onClick={handleCloseModal}
+                className="text-lg font-bold cursor-pointer"
+              >
                 &times;
               </button>
             </div>
@@ -189,7 +192,7 @@ function Dashboard() {
               </div>
               <button
                 type="submit"
-                className="bg-[#00cca6] text-white py-1 px-3 rounded-sm w-full font-bold"
+                className="bg-[#00cca6] text-white py-1 px-3 rounded-sm w-full font-bold cursor-pointer"
               >
                 Add Trip
               </button>
