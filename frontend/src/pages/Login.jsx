@@ -42,7 +42,7 @@ function Login() {
               required
               className="bg-gray-100 border-2 border-gray-200 rounded-md p-2 mb-4 focus:border-gray-200 focus:ring-0"
             />
-            <button className="bg-[#00cca6] py-2 text-white font-bold rounded-md">
+            <button className="bg-[#00cca6] py-2 text-white font-bold rounded-md cursor-pointer">
               Login
             </button>
           </form>
