@@ -43,7 +43,7 @@ function Register() {
 
   return (
     <div className=" bg-[#F3FFFD]">
-      <h2 className="mt-10 mb-6 font-extrabold text-2xl text-center">
+      <h2 className="pt-10 mb-6 font-extrabold text-2xl text-center">
         REGISTER
       </h2>
       <div className="text-black flex flex-col justify-between min-h-screen relative bg-[#F3FFFD] md:flex-row md:pl-20">
