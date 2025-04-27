@@ -112,7 +112,7 @@ function Dashboard() {
               <p>
                 {trip.start_location} → {trip.end_location}
               </p>
-              <p>Cycle Hours: {trip.total_hours} hrs used</p>
+              <p>Drive Hours: {trip.total_hours} hrs used</p>
             </li>
           ))}
         </ul>

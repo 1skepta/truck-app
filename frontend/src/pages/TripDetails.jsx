@@ -51,8 +51,8 @@ function TripDetails() {
             endLocation={trip.end_location}
           />
 
-          <h3 className="text-center font-bold mt-6 mb-3">Trip Analysis</h3>
-          <LogChart tripId={trip.id} />
+          {/* <h3 className="text-center font-bold mt-6 mb-3">Trip Analysis</h3>
+          <LogChart tripId={trip.id} /> */}
         </div>
       )}
     </div>

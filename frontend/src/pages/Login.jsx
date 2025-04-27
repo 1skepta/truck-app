@@ -24,7 +24,7 @@ function Login() {
       <h2 className="pt-20 font-extrabold text-2xl text-center bg-[#F3FFFD]">
         LOGIN
       </h2>
-      <div className="text-black bg-[#F3FFFD] flex flex-col justify-between min-h-screen relative md:flex-row md:px-20 md:mt-10 ">
+      <div className="text-black bg-[#F3FFFD] flex flex-col justify-between min-h-screen relative md:flex-row md:px-20 md:pt-10 ">
         <div className="p-7 flex flex-col items-center bg-[#F3FFFD] rounded-lg md:p-0 md:w-1/2">
           <form
             onSubmit={handleLogin}
